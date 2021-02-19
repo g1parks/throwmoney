@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.g1park.throwingmoney.business.repository.ThrowEventMapper">
+
+    <select id="SelectThrowEvent" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowEvent">
+        SELECT
+          THROW_ID as "throwID",
+          ROOM_ID as "roomID",
+          OWNER_ID as "ownerID",
+          TOTAL_AMOUNT as "totalAmount",
+          TARGET_COUNT as "targetCount",
+          TOKEN as "token",
+          ACCOUNT_NO as "accountNo",
+          INS_DATE as "insDate",
+          UPD_DATE as "updDate"
+        FROM THROW_EVENT WHERE THROW_ID = #{throwID}
+    </select>
+
+    <insert id="InsertThrowEvent" parameterType="net.g1park.throwingmoney.business.model.ThrowEvent"
+            useGeneratedKeys="true" keyColumn="THROW_ID" keyProperty="throwID">
+        INSERT INTO THROW_EVENT
+        (ROOM_ID, OWNER_ID, TOTAL_AMOUNT, TARGET_COUNT, TOKEN, INS_DATE, UPD_DATE)
+        VALUES
+        (
+          #{roomID},
+          #{ownerID},
+          #{totalAmount},
+          #{targetCount},
+          #{token},
+          #{insDate},
+          #{updDate}
+        )
+    </insert>
+
+    <update id ="UpdateThrowEventToken" parameterType="net.g1park.throwingmoney.business.model.ThrowEvent">
+        UPDATE THROW_EVENT
+        SET
+          TOKEN = #{token},
+          ACCOUNT_NO = #{accountNo},
+          UPD_DATE = NOW()
+        WHERE THROW_ID = #{throwID}
+
+    </update>
+
+
+
+</mapper>

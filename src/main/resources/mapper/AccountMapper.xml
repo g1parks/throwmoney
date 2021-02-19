@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.g1park.throwingmoney.business.repository.AccountMapper">
+
+    <select id="SelectAccountInfo" parameterType="String" resultType="net.g1park.throwingmoney.business.model.Account">
+        SELECT
+          ACCOUNT_NO as "accountNo",
+          OWNER_ID as "ownerID",
+          TYPE as "type",
+          BALANCE as "balance",
+          INS_DATE as "insDate",
+          UPD_DATE as "updDate"
+        FROM ACCOUNT WHERE ACCOUNT_NO = #{accountNo}
+    </select>
+
+    <select id="SelectAccountInfoByOwnerID" parameterType="int" resultType="net.g1park.throwingmoney.business.model.Account">
+    SELECT
+    ACCOUNT_NO as "accountNo",
+    OWNER_ID as "ownerID",
+    TYPE as "type",
+    BALANCE as "balance",
+    INS_DATE as "insDate",
+    UPD_DATE as "updDate"
+    FROM ACCOUNT WHERE OWNER_ID = #{ownerID}
+    </select>
+
+    <update id ="UpdateAccountBalance" parameterType="net.g1park.throwingmoney.business.model.Account">
+        UPDATE ACCOUNT
+        SET
+        BALANCE = #{balance},
+        UPD_DATE = NOW()
+        WHERE ACCOUNT_NO = #{accountNo}
+
+    </update>
+
+    <update id ="UpdateAccountBalanceByOwnerID" parameterType="net.g1park.throwingmoney.business.model.Account">
+        UPDATE ACCOUNT
+        SET
+        BALANCE = #{balance},
+        UPD_DATE = NOW()
+        WHERE OWNER_ID = #{ownerID}
+
+    </update>
+
+    <insert id="InsertAccount" parameterType="net.g1park.throwingmoney.business.model.Account"
+            useGeneratedKeys="true" keyColumn="ACCOUNT_NO" keyProperty="accountNo">
+        INSERT INTO ACCOUNT
+        (ACCOUNT_NO, OWNER_ID, TYPE, BALANCE, INS_DATE)
+        VALUES
+        (
+        #{accountNo},
+        #{ownerID},
+        #{type},
+        #{balance},
+        NOW()
+        )
+    </insert>
+
+
+</mapper>

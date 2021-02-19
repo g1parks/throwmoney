@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.g1park.throwingmoney.business.repository.ThrowTargetMapper">
+
+    <insert id="InsertThrowTarget" parameterType="net.g1park.throwingmoney.business.model.ThrowTarget"
+        useGeneratedKeys="true" keyColumn="SEQ_NO" keyProperty="seqNo">
+    INSERT INTO THROW_TARGET
+    (THROW_ID, RECEIVER_ID, DIVIDED_AMOUNT, TOKEN, RESULT_CODE, INS_DATE, UPD_DATE)
+    VALUES
+    (
+    #{throwID},
+    #{receiverID},
+    #{dividedAmount},
+    #{token},
+    #{resultCode},
+    #{insDate},
+    #{updDate}
+    )
+  </insert>
+
+    <select id="SelectThrowTarget" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    SELECT
+      SEQ_NO as "seqNo",
+      THROW_ID as "throwID",
+      RECEIVER_ID as "receiverID",
+      DIVIDED_AMOUNT as "dividedAmount",
+      TOKEN as "token",
+      RESULT_CODE as "resultCode",
+      INS_DATE as "insDate",
+      UPD_DATE as "updDate"
+    FROM THROW_TARGET WHERE SEQ_NO = #{seqNo}
+  </select>
+
+    <select id="SelectThrowTargetList" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    SELECT
+      SEQ_NO as "seqNo",
+      THROW_ID as "throwID",
+      RECEIVER_ID as "receiverID",
+      DIVIDED_AMOUNT as "dividedAmount",
+      TOKEN as "token",
+      RESULT_CODE as "resultCode",
+      INS_DATE as "insDate",
+      UPD_DATE as "updDate"
+    FROM THROW_TARGET WHERE THROW_ID = #{throwID}
+  </select>
+
+    <select id="SelectUnpickedThrowTargetByThrowID" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    SELECT
+      SEQ_NO as "seqNo",
+      THROW_ID as "throwID",
+      RECEIVER_ID as "receiverID",
+      DIVIDED_AMOUNT as "dividedAmount",
+      TOKEN as "token",
+      RESULT_CODE as "resultCode",
+      INS_DATE as "insDate",
+      UPD_DATE as "updDate"
+    FROM THROW_TARGET WHERE THROW_ID = #{throwID} AND RESULT_CODE >=0
+  </select>
+
+    <update id ="UpdateThrowTarget" parameterType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    UPDATE THROW_TARGET
+    SET
+      RECEIVER_ID = #{receiverID},
+      RESULT_CODE = #{resultCode},
+      UPD_DATE = NOW()
+    WHERE SEQ_NO = #{seqNo}
+
+</update>
+
+</mapper>

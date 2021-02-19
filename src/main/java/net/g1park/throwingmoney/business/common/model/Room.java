@@ -1,9 +1,8 @@
-package net.g1park.throwingmoney.business.model;
+package net.g1park.throwingmoney.business.common.model;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 public class Room {

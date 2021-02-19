@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.g1park.throwingmoney.business.repository.RoomMapper">
 
-    <select id="SelectRoomInfoByOwnerID" parameterType="String" resultType="net.g1park.throwingmoney.business.model.Room" >
+    <select id="SelectRoomInfoByOwnerID" parameterType="String" resultType="net.g1park.throwingmoney.business.common.model.Room" >
         SELECT
           SEQ_NO as "seqNo",
           ROOM_ID as "roomID",
@@ -15,7 +15,7 @@
         FROM ROOM WHERE OWNER_ID = #{ownerID}
     </select>
 
-    <select id="SelectRoomInfoByRoomID" parameterType="String" resultType="net.g1park.throwingmoney.business.model.Room" >
+    <select id="SelectRoomInfoByRoomID" parameterType="String" resultType="net.g1park.throwingmoney.business.common.model.Room" >
         SELECT
           SEQ_NO as "seqNo",
           ROOM_ID as "roomID",

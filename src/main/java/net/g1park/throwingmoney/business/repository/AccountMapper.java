@@ -1,7 +1,7 @@
 package net.g1park.throwingmoney.business.repository;
 
 import org.apache.ibatis.annotations.Mapper;
-import net.g1park.throwingmoney.business.model.Account;
+import net.g1park.throwingmoney.business.common.model.Account;
 import org.springframework.stereotype.Service;
 
 @Mapper

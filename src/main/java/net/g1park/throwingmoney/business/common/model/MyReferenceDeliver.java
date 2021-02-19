@@ -1,4 +1,4 @@
-package net.g1park.throwingmoney.business.model;
+package net.g1park.throwingmoney.business.common.model;
 
 // 간접적으로 참조 전달에 사용
 public class MyReferenceDeliver<T> {

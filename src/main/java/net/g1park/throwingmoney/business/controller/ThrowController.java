@@ -1,16 +1,14 @@
 package net.g1park.throwingmoney.business.controller;
 
-import io.swagger.models.auth.In;
-import net.g1park.throwingmoney.business.model.MyReferenceDeliver;
-import net.g1park.throwingmoney.business.model.ThrowEvent;
-import net.g1park.throwingmoney.business.model.ThrowEventStatus;
-import net.g1park.throwingmoney.business.model.ThrowTarget;
-import net.g1park.throwingmoney.business.model.api.APIResponse;
-import net.g1park.throwingmoney.business.model.api.ResponseGetThrowMoneyInfo;
-import net.g1park.throwingmoney.business.model.api.ResponsePickupThrownMoney;
-import net.g1park.throwingmoney.business.model.api.ResponseThrowMoney;
-import net.g1park.throwingmoney.business.model.constant.ResultCode;
-import net.g1park.throwingmoney.business.service.AccountService;
+import net.g1park.throwingmoney.business.common.model.MyReferenceDeliver;
+import net.g1park.throwingmoney.business.common.model.ThrowEvent;
+import net.g1park.throwingmoney.business.common.model.ThrowEventStatus;
+import net.g1park.throwingmoney.business.common.model.ThrowTarget;
+import net.g1park.throwingmoney.business.controller.responsemodel.APIResponse;
+import net.g1park.throwingmoney.business.controller.responsemodel.ResponseGetThrowMoneyInfo;
+import net.g1park.throwingmoney.business.controller.responsemodel.ResponsePickupThrownMoney;
+import net.g1park.throwingmoney.business.controller.responsemodel.ResponseThrowMoney;
+import net.g1park.throwingmoney.business.common.constant.ResultCode;
 import net.g1park.throwingmoney.business.service.ThrowEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,9 +22,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/throw")
 public class ThrowController {
-
-    @Autowired
-    private AccountService accountService;
 
     @Autowired
     private ThrowEventService throwEventService;
@@ -50,11 +45,7 @@ public class ThrowController {
         if (roomID.isEmpty())
             return new ResponseEntity(new APIResponse(ResultCode.ROOM_ID_IS_NOT_SUPPLIED), HttpStatus.OK);
 
-        //to do : 기타 유효성 체크
-
-
-
-        MyReferenceDeliver<ThrowEvent> eventRef = new MyReferenceDeliver();  // 자바가 아쉬운 순간...
+        MyReferenceDeliver<ThrowEvent> eventRef = new MyReferenceDeliver();  // 아쉬운 순간...
 
         ResultCode resultCode = throwEventService.CreateThrowEvent(roomID, userID, totalAmount, totalCount, eventRef);
 
@@ -105,7 +96,7 @@ public class ThrowController {
         return new ResponseEntity(new APIResponse(ResultCode.SUCCESS, "", response), HttpStatus.OK);
     }
 
-    // 현황 조회
+    // 뿌리기 현황 조회
     @PostMapping("GetThrowMoneyInfo")
     public ResponseEntity<APIResponse> GetThrowMoneyInfo(@RequestHeader(value="X-USER-ID") int userID,
                                                           @RequestHeader(value="X-ROOM-ID") String roomID,
@@ -129,7 +120,6 @@ public class ThrowController {
         if (token.isEmpty())
             return new ResponseEntity(new APIResponse(ResultCode.TOKEN_IS_NOT_SUPPLIED), HttpStatus.OK);
 
-        //to do : 기타 유효성 체크
 
         MyReferenceDeliver<ThrowEventStatus> statusRef = new MyReferenceDeliver();
         ResultCode resultCode = throwEventService.GetThrowMoneyInfo(userID, throwID, roomID, token, statusRef);

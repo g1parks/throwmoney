@@ -1,8 +1,8 @@
-package net.g1park.throwingmoney.business.model;
+package net.g1park.throwingmoney.business.common.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.g1park.throwingmoney.business.model.constant.AccountType;
+import net.g1park.throwingmoney.business.common.constant.AccountType;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

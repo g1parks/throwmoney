@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.g1park.throwingmoney.business.repository.AccountMapper">
 
-    <insert id="InsertTransfer" parameterType="net.g1park.throwingmoney.business.model.Transfer" >
+    <insert id="InsertTransfer" parameterType="net.g1park.throwingmoney.business.common.model.Transfer" >
         INSERT INTO TRANSFER
         (FROM_ACCTNO, TO_ACCTNO, AMOUNT, RESULT_CODE, INS_DATE, UPD_DATE)
         VALUES

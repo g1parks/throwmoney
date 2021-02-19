@@ -1,11 +1,10 @@
-package net.g1park.throwingmoney.business.model.api;
+package net.g1park.throwingmoney.business.controller.responsemodel;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import net.g1park.throwingmoney.business.model.constant.ResultCode;
+import net.g1park.throwingmoney.business.common.constant.ResultCode;
 
 @NoArgsConstructor
 @Data

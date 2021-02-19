@@ -1,6 +1,6 @@
 package net.g1park.throwingmoney.business.repository;
 
-import net.g1park.throwingmoney.business.model.Transfer;
+import net.g1park.throwingmoney.business.common.model.Transfer;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

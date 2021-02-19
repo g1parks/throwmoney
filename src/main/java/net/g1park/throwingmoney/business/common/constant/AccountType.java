@@ -1,4 +1,4 @@
-package net.g1park.throwingmoney.business.model.constant;
+package net.g1park.throwingmoney.business.common.constant;
 
 public enum AccountType {
     USER(1),

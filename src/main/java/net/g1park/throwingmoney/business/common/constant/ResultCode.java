@@ -1,4 +1,4 @@
-package net.g1park.throwingmoney.business.model.constant;
+package net.g1park.throwingmoney.business.common.constant;
 
 // 공용 결과 코드 값이며, 클라이언트에게는 숫자코드만 보내거나, 한번 걸러서 상세 정보가 넘어가지 않도록 다듬어야 함..시간 부족..
 public enum ResultCode {
@@ -26,7 +26,10 @@ public enum ResultCode {
     NO_AFFECTED_DATA(240),
     ALREADY_GAINED_MONEY(250),
     PERMISSION_DENIED(260),
-    CANNOT_CREATE_ACCOUNT(270);
+    CANNOT_CREATE_ACCOUNT(270),
+    CANNOT_CREATE_EVENT(280),
+    CANNOT_PICKUP_MONEY(290),
+    CANNOT_READ_EVENT_INFO(300);
 
     private final int numericCode;
 

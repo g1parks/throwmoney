@@ -1,4 +1,4 @@
-package net.g1park.throwingmoney.business.model;
+package net.g1park.throwingmoney.business.common.model;
 
 
 import lombok.AllArgsConstructor;

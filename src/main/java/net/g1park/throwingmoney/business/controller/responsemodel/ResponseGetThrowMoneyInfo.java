@@ -1,4 +1,4 @@
-package net.g1park.throwingmoney.business.model.api;
+package net.g1park.throwingmoney.business.controller.responsemodel;
 
 import lombok.Data;
 

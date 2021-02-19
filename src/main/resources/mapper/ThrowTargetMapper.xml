@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.g1park.throwingmoney.business.repository.ThrowTargetMapper">
 
-    <insert id="InsertThrowTarget" parameterType="net.g1park.throwingmoney.business.model.ThrowTarget"
+    <insert id="InsertThrowTarget" parameterType="net.g1park.throwingmoney.business.common.model.ThrowTarget"
         useGeneratedKeys="true" keyColumn="SEQ_NO" keyProperty="seqNo">
     INSERT INTO THROW_TARGET
     (THROW_ID, RECEIVER_ID, DIVIDED_AMOUNT, TOKEN, RESULT_CODE, INS_DATE, UPD_DATE)
@@ -20,7 +20,7 @@
     )
   </insert>
 
-    <select id="SelectThrowTarget" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    <select id="SelectThrowTarget" parameterType="int" resultType="net.g1park.throwingmoney.business.common.model.ThrowTarget">
     SELECT
       SEQ_NO as "seqNo",
       THROW_ID as "throwID",
@@ -33,7 +33,7 @@
     FROM THROW_TARGET WHERE SEQ_NO = #{seqNo}
   </select>
 
-    <select id="SelectThrowTargetList" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    <select id="SelectThrowTargetList" parameterType="int" resultType="net.g1park.throwingmoney.business.common.model.ThrowTarget">
     SELECT
       SEQ_NO as "seqNo",
       THROW_ID as "throwID",
@@ -46,20 +46,7 @@
     FROM THROW_TARGET WHERE THROW_ID = #{throwID}
   </select>
 
-    <select id="SelectUnpickedThrowTargetByThrowID" parameterType="int" resultType="net.g1park.throwingmoney.business.model.ThrowTarget">
-    SELECT
-      SEQ_NO as "seqNo",
-      THROW_ID as "throwID",
-      RECEIVER_ID as "receiverID",
-      DIVIDED_AMOUNT as "dividedAmount",
-      TOKEN as "token",
-      RESULT_CODE as "resultCode",
-      INS_DATE as "insDate",
-      UPD_DATE as "updDate"
-    FROM THROW_TARGET WHERE THROW_ID = #{throwID} AND RESULT_CODE >=0
-  </select>
-
-    <update id ="UpdateThrowTarget" parameterType="net.g1park.throwingmoney.business.model.ThrowTarget">
+    <update id ="UpdateThrowTarget" parameterType="net.g1park.throwingmoney.business.common.model.ThrowTarget">
     UPDATE THROW_TARGET
     SET
       RECEIVER_ID = #{receiverID},

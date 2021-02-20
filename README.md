@@ -4,7 +4,7 @@
 
 - MacOS / IntelliJ 2018
 - Spring Boot (Java SDK 8)
-- MySQL(Google cloude) / MyBatis
+- MySQL(Google cloud사용, public으로 ) / MyBatis
 - Swagger (http://localhost:8080/swagger-ui.html)
 
 ## API Spec

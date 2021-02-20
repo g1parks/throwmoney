@@ -4,7 +4,7 @@
 
 - MacOS / IntelliJ 2018
 - Spring Boot (Java SDK 8)
-- MySQL(Google cloud사용, public으로 열려있음) / MyBatis
+- MySQL(Google cloud사용, public으로 열려있는상태) / MyBatis
 - Swagger (http://localhost:8080/swagger-ui.html)
 
 ## API Spec
@@ -96,7 +96,7 @@ response sample
 - 반대로 조회의 경우는 트랜잭션을 아예 적용하지 않아도 무방하다고 판단하였음
 - 부득이하게 mySQL 을 사용하였으나 MongoDB나 캐시를 함께 사용하면 대규모 트래픽도 충분히 감당할 것으로 예상
 
-### 테스트 항목
+### 테스트
 필수 제약사항 시나리오별로 테스트코드 작성 (ThrowEventServiceTest)
 - 돈뿌리기-성공 및 전후 주최자의 잔고 비교
 - 돈줍기-비정상토큰이면 실패
@@ -107,3 +107,4 @@ response sample
 - 돈줍기-제한시간초과면 실패
 - 조회하기-뿌린사람아니면 불가
 - 조회하기-7일 지나면 불가
+테스트 시 admin API 없이 데이터 조작은 직접 MySQL 도구로 진행

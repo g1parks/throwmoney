@@ -225,7 +225,7 @@ public class ThrowEventService {
 
             wrappedThrowStatus.obj = eventStatus;
         }catch (Exception e){
-
+            // to do : logging
             return ResultCode.CANNOT_READ_EVENT_INFO;
         }
         return ResultCode.SUCCESS;

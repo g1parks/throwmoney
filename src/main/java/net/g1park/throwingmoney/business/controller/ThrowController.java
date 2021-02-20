@@ -49,14 +49,16 @@ public class ThrowController {
 
         ResultCode resultCode = throwEventService.CreateThrowEvent(roomID, userID, totalAmount, totalCount, eventRef);
 
-        if (resultCode != ResultCode.SUCCESS)
+        if (resultCode != ResultCode.SUCCESS) {
+            // to do : logging
             return new ResponseEntity(new APIResponse(resultCode), HttpStatus.OK);
+        }
 
         ResponseThrowMoney response = new ResponseThrowMoney();
         response.setToken(eventRef.obj.getToken());
         response.setThrowID(eventRef.obj.getThrowID());
 
-        return new ResponseEntity(new APIResponse(ResultCode.SUCCESS, "", response), HttpStatus.OK);
+        return new ResponseEntity(new APIResponse(ResultCode.SUCCESS, resultCode.toString(), response), HttpStatus.OK);
     }
 
     @PostMapping("RequestPickupMoney")
@@ -82,18 +84,19 @@ public class ThrowController {
         if (token.isEmpty())
             return new ResponseEntity(new APIResponse(ResultCode.TOKEN_IS_NOT_SUPPLIED), HttpStatus.OK);
 
-        //to do : 기타 유효성 체크
 
         MyReferenceDeliver<ThrowTarget> targetRef = new MyReferenceDeliver();
         ResultCode resultCode = throwEventService.PickupThrownMoney(userID, throwID, roomID, token, targetRef);
 
-        if (resultCode != ResultCode.SUCCESS)
+        if (resultCode != ResultCode.SUCCESS) {
+            // to do : logging
             return new ResponseEntity(new APIResponse(resultCode), HttpStatus.OK);
+        }
 
         ResponsePickupThrownMoney response = new ResponsePickupThrownMoney();
         response.setGainedMoney(targetRef.obj.getDividedAmount());
 
-        return new ResponseEntity(new APIResponse(ResultCode.SUCCESS, "", response), HttpStatus.OK);
+        return new ResponseEntity(new APIResponse(ResultCode.SUCCESS, resultCode.toString(), response), HttpStatus.OK);
     }
 
     // 뿌리기 현황 조회
@@ -124,10 +127,10 @@ public class ThrowController {
         MyReferenceDeliver<ThrowEventStatus> statusRef = new MyReferenceDeliver();
         ResultCode resultCode = throwEventService.GetThrowMoneyInfo(userID, throwID, roomID, token, statusRef);
 
-        if (resultCode != ResultCode.SUCCESS)
+        if (resultCode != ResultCode.SUCCESS) {
+            //to do : logging
             return new ResponseEntity(new APIResponse(resultCode), HttpStatus.OK);
-
-
+        }
 
         ResponseGetThrowMoneyInfo response = new ResponseGetThrowMoneyInfo();
         {
@@ -147,10 +150,7 @@ public class ThrowController {
             response.setAmountOfMoeny(statusRef.obj.getTotalAmount());
             response.setSumOfReceivedMoney(sumOfPickedupMoney);
             response.setReceiverIDList(receiverIDList);
-
         }
-
-
 
         return new ResponseEntity(
                 new APIResponse(ResultCode.SUCCESS, ResultCode.SUCCESS.toString(), response), HttpStatus.OK);

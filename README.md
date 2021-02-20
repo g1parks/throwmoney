@@ -56,8 +56,8 @@ response sample
 request sample
 <pre><code>
 {
-"throwID":66,
-"token":"81c"
+"throwID":66, // 뿌리기 이벤트 식별키
+"token":"81c" // 검증 토큰
 }
 </code></pre>
 response sample
@@ -66,10 +66,10 @@ response sample
   "resultCode": 0,
   "message": "SUCCESS",
   "data": {
-    "throwEventTime": "2021-02-20T07:54:54",
-    "amountOfMoeny": 10000,
-    "sumOfReceivedMoney": 4307,
-    "receiverIDList": [
+    "throwEventTime": "2021-02-20T07:54:54", // 뿌린 시간
+    "amountOfMoeny": 10000, // 뿌린 돈
+    "sumOfReceivedMoney": 4307, // 현재 주워간 돈 합계
+    "receiverIDList": [ // 주워간 사람 ID
       10000002,
       10000003
     ]
